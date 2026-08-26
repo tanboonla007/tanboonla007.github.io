@@ -17,7 +17,7 @@ I love Computer so much (bah~)
 
 🔗 My Website : https://tanboonla007.github.io
 
-![คำอธิบายภาพ](https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.tumblr.com%2Faka-nbj-blog%2F135745928095%2Fcharacter-appreciation-post-1-lambo-do-you&ved=0CBYQjRxqFwoTCLiggOWBvpYDFQAAAAAdAAAAABBU&opi=89978449)
+<img src="https://64.media.tumblr.com/b2861c8fcf4e4604d707beffbc635f79/tumblr_nzt5h8lQ891uuep0mo1_500.gif" width="600" alt="Lambo GIF">
 
 ---
 
