@@ -17,7 +17,7 @@ I love Computer so much (bah~)
 
 🔗 My Website : https://tanboonla007.github.io
 
-![mirai GIF](../assets/mirai.gif)
+![mirai GIF](./assets/mirai.gif)
 
 ---
 
