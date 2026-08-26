@@ -6,10 +6,11 @@
 <title>เว็บไซต์ของฉัน</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-<!-- ==========================================================================
-     แก้เฉพาะในกล่องนี้ก็พอ ส่วนอื่นของไฟล์ไม่ต้องแตะก็ได้
-     ทุกช่องมีคำอธิบายกำกับว่าใส่อะไร
-     ========================================================================== -->
+<!-- Google Fonts: Noto Sans Thai -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <script>
 const ME = {
 
@@ -23,7 +24,6 @@ const ME = {
   role: "นักศึกษาวิศวกรรมคอมพิวเตอร์ ปี 2 · มทร.อีสาน",
 
   // หนึ่งประโยคว่าคุณสนใจสร้างอะไร เขียนให้เจาะจง อย่าเขียนกว้าง ๆ
-  // ไม่ดี: "รักการเขียนโปรแกรม"   ดี: "อยากทำระบบรดน้ำต้นไม้ที่ดูพยากรณ์อากาศก่อนรดน้ำ"
   tagline: "สร้าง UI ด้วย State Management และเชื่อมต่อ RESTful API อย่างเป็นระบบ <3",
 
   // แนะนำตัว 2-3 บรรทัด ว่ามาจากไหน สนใจอะไร กำลังจะไปทางไหน
@@ -36,12 +36,10 @@ const ME = {
     "การพัฒนา Web Application",
   ],
 
-  // ผลงาน ปี 1 เทอมแรกยังไม่มีก็ไม่เป็นไร ปล่อยว่างไว้ได้ หน้าเว็บจะขึ้นข้อความให้เอง
-  // เมื่อมีงานแล้วค่อยเพิ่มทีละชิ้น เช่น
-  // { title: "เครื่องวัดอุณหภูมิห้อง", desc: "ใช้ Arduino กับเซนเซอร์ DHT11", url: "" },
+  // ผลงาน
   works: [],
 
-  // ช่องทางติดต่อ ใช้ลิงก์สาธารณะเท่านั้น อย่าใส่เบอร์โทรหรืออีเมลส่วนตัว
+  // ช่องทางติดต่อ
   links: [
     { label: "GitHub", url: "https://github.com/tanboonla007" },
   ],
@@ -53,29 +51,32 @@ const ME = {
 </script>
 
 <style>
+/* ---------- Smooth Scroll ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ---------- สีพื้นฐาน ทุกธีมใช้ร่วมกัน ---------- */
 :root {
   --bg:#0b1020; --line:#24304f; --text:#e8edf7; --muted:#93a1c0;
   --surface:rgba(255,255,255,.05);      /* พื้นของการ์ดผลงานและแผงข้อมูล */
+  --nav-bg:rgba(11, 16, 32, 0.85);      /* พื้นหลัง Navbar แบบโปร่งแสง */
   --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 
-/* ---------- ธีมสี เลือกได้ที่ช่อง theme ด้านบน ไม่ต้องแก้ตรงนี้ ----------
-   ห้าธีมแรกเปลี่ยนแค่สีเน้นกับแสงพื้นหลัง พื้นหลังยังเข้มเหมือนกันหมด
-   จึงไม่มีทางเลือกจนอ่านไม่ออก                                          */
+/* ---------- ธีมสี ---------- */
 :root,
-[data-theme="ocean"]  { --accent:#38bdf8; --accent-soft:#0ea5e9; --glow1:#1d2a52; --glow2:#10305c; }
-[data-theme="sunset"] { --accent:#fb923c; --accent-soft:#f97316; --glow1:#4a2418; --glow2:#5c2b10; }
-[data-theme="forest"] { --accent:#34d399; --accent-soft:#10b981; --glow1:#14342a; --glow2:#0f3d2e; }
-[data-theme="grape"]  { --accent:#c084fc; --accent-soft:#a855f7; --glow1:#2e1d52; --glow2:#3d1a5c; }
-[data-theme="mono"]   { --accent:#e2e8f0; --accent-soft:#cbd5e1; --glow1:#1e293b; --glow2:#0f172a; }
+[data-theme="ocean"]  { --accent:#38bdf8; --accent-soft:#0ea5e9; --glow1:#1d2a52; --glow2:#10305c; --nav-bg:rgba(11, 16, 32, 0.85); }
+[data-theme="sunset"] { --accent:#fb923c; --accent-soft:#f97316; --glow1:#4a2418; --glow2:#5c2b10; --nav-bg:rgba(15, 12, 10, 0.85); }
+[data-theme="forest"] { --accent:#34d399; --accent-soft:#10b981; --glow1:#14342a; --glow2:#0f3d2e; --nav-bg:rgba(10, 20, 16, 0.85); }
+[data-theme="grape"]  { --accent:#c084fc; --accent-soft:#a855f7; --glow1:#2e1d52; --glow2:#3d1a5c; --nav-bg:rgba(20, 12, 32, 0.85); }
+[data-theme="mono"]   { --accent:#e2e8f0; --accent-soft:#cbd5e1; --glow1:#1e293b; --glow2:#0f172a; --nav-bg:rgba(15, 23, 42, 0.85); }
 
-/* ธีมเดียวที่พลิกเป็นพื้นสว่าง จึงต้องเขียนยาวกว่าเพื่อน
-   เพราะต้องกลับค่าพื้นหลัง ตัวอักษร เส้น และพื้นการ์ดใหม่ทั้งชุด */
 [data-theme="mono-light"] {
   --accent:#334155; --accent-soft:#475569; --glow1:#dbe3ee; --glow2:#e6ebf3;
   --bg:linear-gradient(180deg, #ffffff 0%, #edf7fa 60%, #bcedf7 100%); --line:#ccd6e4; --text:#0f172a; --muted:#52627d;
   --surface:rgba(15,23,42,.04);
+  --nav-bg:rgba(255, 255, 255, 0.85);
 }
 
 *{ box-sizing:border-box }
@@ -83,24 +84,68 @@ const ME = {
 body{
   margin:0; min-height:100vh; color:var(--text);
   font-family: 'Noto Sans Thai', 'Noto Sans', system-ui, -apple-system, sans-serif;
-  line-height:1.75;                       /* ระยะห่างระหว่างบรรทัด อ่านง่ายขึ้นมาก */
+  line-height:1.75;
   background:
     radial-gradient(1000px 460px at 12% -10%, var(--glow1) 0, transparent 60%),
     radial-gradient(820px 400px at 92% 0,   var(--glow2) 0, transparent 55%),
     var(--bg);
 }
 
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-links {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color .15s ease;
+}
+.nav-links a:hover {
+  color: var(--accent);
+}
+
 /* ความกว้างจำกัดไว้ ไม่ให้บรรทัดยาวจนตาไล่ไม่ทัน */
 .wrap{ max-width:760px; margin:0 auto; padding:0 22px 80px }
 
 /* ---------- ส่วนหัว ---------- */
-.hero{ display:flex; gap:22px; align-items:center; padding:64px 0 8px; flex-wrap:wrap }
+.hero{ display:flex; gap:22px; align-items:center; padding:48px 0 8px; flex-wrap:wrap }
 .avatar{
   width:96px; height:96px; border-radius:50%;
   border:2px solid var(--accent); object-fit:cover; flex-shrink:0;
   background:var(--surface);
 }
-/* ใช้แทนรูปโปรไฟล์ เมื่อโหลดรูปจาก GitHub ไม่สำเร็จ */
 .avatar-fallback{
   width:96px; height:96px; border-radius:50%; flex-shrink:0;
   border:2px solid var(--accent); background:var(--surface);
@@ -126,8 +171,8 @@ h1{ font-size:clamp(30px,6vw,46px); line-height:1.15; margin:0 0 8px; letter-spa
 }
 .links a:hover, .links a:focus-visible{ border-color:#3baeff; color:#3baeff }
 
-/* ---------- หัวข้อของแต่ละส่วน ---------- */
-section{ margin-top:52px }
+/* ---------- หัวข้อของแต่ละส่วน (เพิ่ม scroll-margin-top เพื่อไม่ให้ Navbar บัง) ---------- */
+section{ margin-top:52px; scroll-margin-top: 70px; }
 h2{
   font:600 12px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase;
   color:var(--muted); border-bottom:1px solid var(--line);
@@ -173,13 +218,28 @@ footer a{ color:var(--accent) }
 
 /* ---------- จอมือถือ ---------- */
 @media (max-width:520px){
-  .hero{ padding-top:44px; gap:16px }
+  .nav-container { padding: 10px 16px; }
+  .nav-links { gap: 12px; font-size: 13px; }
+  .hero{ padding-top:32px; gap:16px }
   .avatar, .avatar-fallback{ width:72px; height:72px; font-size:28px }
   .row{ grid-template-columns:1fr; gap:2px }
 }
 </style>
 </head>
 <body>
+
+<!-- Navbar แบบ Sticky -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-brand" id="navBrand">⚡ Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="#learning-section">กำลังเรียนรู้</a></li>
+      <li><a href="#works-section">ผลงาน</a></li>
+      <li><a href="#network-section">ข้อมูลการเชื่อมต่อ</a></li>
+    </ul>
+  </div>
+</nav>
+
 <div class="wrap">
 
   <header class="hero">
@@ -193,19 +253,17 @@ footer a{ color:var(--accent) }
   <p class="about" id="about"></p>
   <ul class="links" id="links"></ul>
 
-  <section>
+  <section id="learning-section">
     <h2>กำลังเรียนรู้</h2>
     <ul class="learning" id="learning"></ul>
   </section>
 
-  <section>
+  <section id="works-section">
     <h2>ผลงาน</h2>
     <div class="works" id="works"></div>
   </section>
 
-  <!-- ค่าทุกตัวในแผงนี้ browser วัดจากการโหลดหน้านี้จริง ไม่ได้เขียนค้างไว้
-       เปรียบเทียบกับ DevTools (F12) แท็บ Network ได้ ค่าควรสอดคล้องกัน -->
-  <section>
+  <section id="network-section">
     <h2>ข้อมูลการเชื่อมต่อของหน้านี้</h2>
     <div class="panel">
       <dl id="netpanel"></dl>
@@ -230,10 +288,8 @@ $('role').textContent    = ME.role;
 $('name').textContent    = ME.name;
 $('tagline').textContent = ME.tagline;
 $('about').textContent   = ME.about;
+$('navBrand').textContent = '⚡ ' + ME.name;
 
-/* รูปโปรไฟล์ดึงจาก GitHub อัตโนมัติ ไม่ต้องอัปโหลดรูปเอง
-   ถ้าโหลดไม่สำเร็จ (พิมพ์ username ผิด หรือเน็ตมีปัญหา) จะแสดงตัวอักษรแรกของชื่อแทน
-   หน้าเว็บจะได้ไม่มีรูปแตกค้างอยู่ */
 const avatar = $('avatar');
 avatar.alt = 'รูปโปรไฟล์ของ ' + ME.name;
 avatar.addEventListener('error', () => {
@@ -247,7 +303,7 @@ avatar.src = 'https://github.com/' + ME.github + '.png?size=192';
 
 for (const item of ME.learning || []) {
   const li = document.createElement('li');
-  li.textContent = item;          // ใช้ textContent เสมอ ปลอดภัยกว่า innerHTML
+  li.textContent = item;
   $('learning').appendChild(li);
 }
 
@@ -261,7 +317,6 @@ for (const link of ME.links || []) {
   $('links').appendChild(li);
 }
 
-/* ผลงานยังว่างได้ ปี 1 เทอมแรกเป็นเรื่องปกติ */
 if (!ME.works || ME.works.length === 0) {
   const box = document.createElement('div');
   box.className = 'empty';
@@ -291,7 +346,6 @@ $('repolink').href = 'https://github.com/' + ME.github + '/' + ME.github + '.git
 
 /* ---------- 2) แผงข้อมูลการเชื่อมต่อ อ่านค่าจริงจาก Performance API ---------- */
 function ms(v) {
-  /* 0 ms ไม่ได้แปลว่าไม่มีค่า แต่แปลว่า browser ข้ามขั้นนั้นเพราะมีข้อมูลใน cache อยู่แล้ว */
   if (typeof v !== 'number' || v < 0 || Number.isNaN(v)) return '—';
   return Math.round(v) + ' ms';
 }
