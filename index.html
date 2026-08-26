@@ -101,7 +101,7 @@ body{
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   
-  /* Animation 1: โหลดครั้งแรกให้ Fade In ลงมาจากด้านบน */
+  /* Animation: Fade In ลงมาจากด้านบน */
   animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -193,6 +193,10 @@ body{
   width:96px; height:96px; border-radius:50%;
   border:2px solid var(--accent); object-fit:cover; flex-shrink:0;
   background:var(--surface);
+  transition: transform 0.3s ease;
+}
+.avatar:hover {
+  transform: scale(1.05) rotate(3deg);
 }
 .avatar-fallback{
   width:96px; height:96px; border-radius:50%; flex-shrink:0;
@@ -215,11 +219,15 @@ h1{ font-size:clamp(30px,6vw,46px); line-height:1.15; margin:0 0 8px; letter-spa
 .links a{
   display:inline-block; border:1px solid var(--line); border-radius:999px;
   padding:9px 20px; color:var(--text); text-decoration:none; font-size:15px;
-  transition:border-color .15s ease, color .15s ease;
+  transition:all 0.25s ease;
 }
-.links a:hover, .links a:focus-visible{ border-color:#3baeff; color:#3baeff }
+.links a:hover, .links a:focus-visible{
+  border-color:#3baeff; color:#3baeff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 174, 255, 0.15);
+}
 
-/* ---------- หัวข้อของแต่ละส่วน (เพิ่ม scroll-margin-top เพื่อไม่ให้ Navbar บัง) ---------- */
+/* ---------- หัวข้อของแต่ละส่วน ---------- */
 section{ margin-top:52px; scroll-margin-top: 70px; }
 h2{
   font:600 12px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase;
@@ -232,6 +240,11 @@ h2{
 .learning li{
   border-left:2px solid #3BAEFF; padding:2px 0 2px 16px;
   margin-bottom:14px; color:var(--muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.learning li:hover {
+  transform: translateX(6px);
+  color: var(--text);
 }
 
 /* ---------- ผลงาน ---------- */
@@ -239,6 +252,12 @@ h2{
 .work{
   border:1px solid var(--line); border-radius:12px; padding:16px 18px;
   background:var(--surface);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.work:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 .work h3{ margin:0 0 6px; font-size:17px }
 .work p{ margin:0; color:var(--muted); font-size:14.5px }
@@ -263,6 +282,18 @@ h2{
 
 footer{ margin-top:56px; padding-top:22px; border-top:1px solid var(--line); color:var(--muted); font-size:14px }
 footer a{ color:var(--accent) }
+
+/* ---------- Scroll Reveal Animations ---------- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ---------- จอมือถือ ---------- */
 @media (max-width:520px){
@@ -290,7 +321,7 @@ footer a{ color:var(--accent) }
 
 <div class="wrap">
 
-  <header class="hero">
+  <header class="hero animate-on-scroll">
     <img class="avatar" id="avatar" alt="" width="96" height="96">
     <div class="hero-text">
       <p class="role" id="role"></p>
@@ -298,20 +329,20 @@ footer a{ color:var(--accent) }
       <p class="tagline" id="tagline"></p>
     </div>
   </header>
-  <p class="about" id="about"></p>
-  <ul class="links" id="links"></ul>
+  <p class="about animate-on-scroll" id="about"></p>
+  <ul class="links animate-on-scroll" id="links"></ul>
 
-  <section id="learning-section">
+  <section id="learning-section" class="animate-on-scroll">
     <h2>กำลังเรียนรู้</h2>
     <ul class="learning" id="learning"></ul>
   </section>
 
-  <section id="works-section">
+  <section id="works-section" class="animate-on-scroll">
     <h2>ผลงาน</h2>
     <div class="works" id="works"></div>
   </section>
 
-  <section id="network-section">
+  <section id="network-section" class="animate-on-scroll">
     <h2>ข้อมูลการเชื่อมต่อของหน้านี้</h2>
     <div class="panel">
       <dl id="netpanel"></dl>
@@ -433,16 +464,15 @@ window.addEventListener('load', () => setTimeout(() => {
   }
 }, 0));
 
-  /* ---------- 3) ควบคุม Smooth Scroll เมื่อกดเมนู Navbar ---------- */
+/* ---------- 3) ควบคุม Smooth Scroll เมื่อกดเมนู Navbar ---------- */
 document.querySelectorAll('.nav-links a').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault(); // ป้องกันการกระโดดแบบปกติของ browser
+    e.preventDefault();
     
     const targetId = this.getAttribute('href');
     const targetElement = document.querySelector(targetId);
     
     if (targetElement) {
-      // คำนวณความสูงของ Navbar เพื่อไม่ให้บังหัวข้อ
       const navHeight = document.querySelector('.navbar').offsetHeight;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navHeight - 16;
@@ -453,6 +483,25 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
       });
     }
   });
+});
+
+/* ---------- 4) Scroll Reveal Animation (Intersection Observer) ---------- */
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.animate-on-scroll').forEach(element => {
+  observer.observe(element);
 });
 </script>
 </body>
