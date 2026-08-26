@@ -17,7 +17,7 @@ I love Computer so much (bah~)
 
 🔗 My Website : https://tanboonla007.github.io
 
-![Lambo GIF](https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2Fmirai-kuriyama-anime-gif-mirai-kuriyama-anime-beyond-the-boundary-discover-share-gifs--149533650119530856%2F&ved=0CBYQjRxqFwoTCNDRgK-DvpYDFQAAAAAdAAAAABA5&opi=89978449)
+![mirai GIF](./mirai.gif)
 
 ---
 
