@@ -73,7 +73,7 @@ const ME = {
 /* ธีมเดียวที่พลิกเป็นพื้นสว่าง จึงต้องเขียนยาวกว่าเพื่อน
    เพราะต้องกลับค่าพื้นหลัง ตัวอักษร เส้น และพื้นการ์ดใหม่ทั้งชุด */
 [data-theme="mono-light"] {
-  --accent:#3baeff; --accent-soft:#475569; --glow1:#dbe3ee; --glow2:#e6ebf3;
+  --accent:#334155; --accent-soft:#475569; --glow1:#dbe3ee; --glow2:#e6ebf3;
   --bg:#f7f9fc; --line:#ccd6e4; --text:#0f172a; --muted:#52627d;
   --surface:rgba(15,23,42,.04);
 }
@@ -110,7 +110,7 @@ body{
 .hero-text{ flex:1; min-width:240px }
 .role{
   font:600 12px/1 var(--mono); letter-spacing:.14em;
-  text-transform:uppercase; color:#334155; margin:0 0 8px;
+  text-transform:uppercase; color:var(--accent); margin:0 0 8px;
 }
 h1{ font-size:clamp(30px,6vw,46px); line-height:1.15; margin:0 0 8px; letter-spacing:-.02em }
 .tagline{ font-size:clamp(17px,2.6vw,20px); color:var(--text); margin:0; opacity:.92 }
@@ -137,7 +137,7 @@ h2{
 /* ---------- รายการกำลังเรียนรู้ ---------- */
 .learning{ list-style:none; padding:0; margin:0 }
 .learning li{
-  border-left:2px solid var(--accent); padding:2px 0 2px 16px;
+  border-left:2px solid #3BAEFF; padding:2px 0 2px 16px;
   margin-bottom:14px; color:var(--muted);
 }
 
