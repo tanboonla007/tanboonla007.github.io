@@ -39,13 +39,13 @@ const ME = {
 <!-- แผงฉากหลังสไตล์ Aurora Mesh Gradient -->
 <div class="bg-decor" aria-hidden="true"></div>
 
-<div class="app-layout" id="appLayout">
+<!-- กำหนดให้เริ่มต้นเปิดหน้ามา Sidebar จะอยู่ในสถานะซ่อน (sidebar-collapsed) -->
+<div class="app-layout sidebar-collapsed" id="appLayout">
   
   <!-- ปุ่มเปิด Sidebar ลอย (แสดงเมื่อ Sidebar ซ่อนอยู่) -->
   <button class="toggle-btn floating-toggle" id="btnOpenSidebar" aria-label="เปิดเมนู">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
-
 
   <!-- Sidebar ด้านข้าง -->
   <aside class="sidebar">
@@ -68,8 +68,6 @@ const ME = {
       <p>© 2026 Tan Tanboon</p>
     </div>
   </aside>
-
-
 
   <!-- เนื้อหาหลัก -->
   <main class="main-content">
@@ -241,6 +239,7 @@ document.querySelectorAll('.sidebar-menu a, .sidebar-brand').forEach(anchor => {
     if (targetId === '#') {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      appLayout.classList.add('sidebar-collapsed');
       return;
     }
 
@@ -256,9 +255,8 @@ document.querySelectorAll('.sidebar-menu a, .sidebar-brand').forEach(anchor => {
           behavior: 'smooth'
         });
 
-        if (window.innerWidth <= 992) {
-          appLayout.classList.add('sidebar-collapsed');
-        }
+        // ซ่อน Sidebar ทุกครั้งหลังกดเลือกเมนู
+        appLayout.classList.add('sidebar-collapsed');
       }
     }
   });
